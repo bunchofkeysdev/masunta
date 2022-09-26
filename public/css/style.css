@@ -1,0 +1,44 @@
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.containerBox {
+    display: flex;
+    justify-content: center;
+}
+
+.postBox {
+    width: 25rem;
+    height: 25rem;
+    border: 2px solid #d0d7de;
+    border-radius: 6px;
+    position: relative;
+}
+
+.profile {
+    padding: 1.5rem;
+    border-bottom: 1px solid #d0d7de;
+}
+
+.post {
+    padding: 3rem;
+}
+
+.postCaption {
+    position: absolute;
+    bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+/* @media screen and (max-width: 1000px) {
+    .containerBox {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: red;
+    }
+} */
