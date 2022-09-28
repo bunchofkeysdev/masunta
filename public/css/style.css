@@ -3,6 +3,10 @@ a {
     text-decoration: none;
 }
 
+header {
+    padding: 2rem;
+}
+
 .containerBox {
     display: flex;
     justify-content: center;
@@ -33,6 +37,14 @@ a {
     border-bottom: none;
     border-left: none;
     border-right: none;
+}
+
+.fa-check {
+    position: absolute;
+    bottom: 34px;
+    right: 9px;
+    outline: none;
+    color: green;
 }
 
 /* @media screen and (max-width: 1000px) {

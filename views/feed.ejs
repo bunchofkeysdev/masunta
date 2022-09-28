@@ -28,14 +28,17 @@
   </html>
 
   <div class="container">
-    <div class="col-6">
-      <div>
-        <p><strong>User Name</strong>: <%= user.userName %>
-        </p>
-        <p><strong>Email</strong>: <%= user.email %>
-        </p>
-        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-      </div>
+    <div>
+      <p> Hello <strong>
+          <%= user.userName %>
+        </strong>
+      </p>
+      <!-- <p><strong>Email</strong>: <%= user.email %>
+      </p> -->
+      <!-- <a href="/logout" class="col-3 btn btn-primary">Logout</a> -->
+    </div>
+    <div class="col-6" style="margin: auto;">
+
       <div class="mt-5">
         <h2>Declare</h2>
         <form action="/post/createPost" enctype="multipart/form-data" method="POST">
