@@ -43,6 +43,7 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
+        taskDone: false
       });
       console.log("Post has been added!");
       res.redirect("/feed");
@@ -50,15 +51,15 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  taskDone: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $inc: { likes: 1 },
+          $upsert: { taskDone },
         }
       );
-      console.log("Likes +1");
+      console.log("Task done");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);

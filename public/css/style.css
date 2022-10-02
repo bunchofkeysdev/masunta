@@ -7,6 +7,10 @@ header {
     padding: 2rem;
 }
 
+li {
+    list-style: none;
+}
+
 .containerBox {
     display: flex;
     justify-content: center;
@@ -37,6 +41,17 @@ header {
     border-bottom: none;
     border-left: none;
     border-right: none;
+}
+
+
+
+.postButton {
+    border: 0;
+    color: blue;
+    background: #fff;
+    position: relative;
+    left: 330px;
+    top: 122px;
 }
 
 .fa-check {
