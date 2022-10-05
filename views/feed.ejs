@@ -1,0 +1,78 @@
+<%- include('partials/header') -%>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/feed">Feed</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+      </div>
+    </nav>
+    <header class="container">
+      <div class="text-center">
+        <h1 class=""><a href="/profile">Masunta</a></h1>
+        <span>The Number 1 Accountable Tool</span>
+      </div>
+    </header>
+  </body>
+
+  </html>
+
+  <div class="container">
+    <div class="col-6">
+      <div>
+        <p><strong>User Name</strong>: <%= user.userName %>
+        </p>
+        <p><strong>Email</strong>: <%= user.email %>
+        </p>
+        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+      </div>
+      <div class="mt-5">
+        <h2>Declare</h2>
+        <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+          <!-- <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title">
+        </div> -->
+          <div class="mb-3">
+            <label for="caption" class="form-label"></label>
+            <textarea class="form-control" id="caption" name="caption" placeholder="I will do..."></textarea>
+          </div>
+          <!-- <div class="mb-3">
+          <label for="imgUpload" class="form-label">Image</label>
+          <input type="file" class="form-control" id="imageUpload" name="file">
+        </div> -->
+          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+        </form>
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<posts.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <h5>
+              <%= posts[i].createdBy%>
+            </h5>
+            <a href="/post/<%= posts[i]._id%>">
+              <%= posts[i].caption%>
+                <!-- <img class="img-fluid" src="<%= posts[i].image%>"> -->
+            </a>
+
+          </li>
+          <% } %>
+      </ul>
+    </div>
+  </div>
+  <%- include('partials/footer') -%>
