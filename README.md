@@ -18,3 +18,5 @@
 # Run
 
 `npm start`
+
+Maunta is an Accountable social network 
