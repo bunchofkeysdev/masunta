@@ -56,7 +56,7 @@ module.exports = {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
         {
-          $upsert: { taskDone },
+          taskDone: true,
         }
       );
       console.log("Task done");
