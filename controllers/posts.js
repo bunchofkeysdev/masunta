@@ -60,7 +60,7 @@ module.exports = {
         }
       );
       console.log("Task done");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect("/profile");
     } catch (err) {
       console.log(err);
     }
