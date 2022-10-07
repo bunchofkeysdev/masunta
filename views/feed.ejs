@@ -49,7 +49,7 @@
           <div class="mb-3">
             <label for="caption" class="form-label"></label>
             <textarea class="form-control" id="caption" name="caption"
-              placeholder="I finish 1 codewars kata..."></textarea>
+              placeholder="I will finish 1 codewars kata..."></textarea>
           </div>
           <!-- <div class="mb-3">
           <label for="imgUpload" class="form-label">Image</label>
@@ -83,9 +83,14 @@
                     <!-- <img class="img-fluid" src="<%= posts[i].image%>"> -->
                   </a>
                   <div class="mb-3">
-                    <label for="caption" class="form-label"></label>
-                    <textarea class="form-control postCaption" id="caption" name="caption"
-                      placeholder="I will do..."></textarea>
+                    <form action="/comment/createComment/<%=posts[i]._id%>" method="POST">
+                      <div class="mb-3">
+                        <label for="comment" class="form-label"></label>
+                        <textarea class="form-control postCaption" id="comment" name="comment"
+                          placeholder="Add Comment..."></textarea>
+                        <button class="postButton" type="submit">Post</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
