@@ -81,10 +81,31 @@
             </form>
             <%}%>
               <%if(post.user==user.id && !post.taskDone){ %>
-                <form class="col-1" action="/post/taskDone/<%= post.id %>?_method=PUT" method="POST">
-                  <button class="btn btn-primary fa fa-check" type="submit"></button>
-                </form>
 
+                <!-- Trigger/Open The Modal -->
+                <button id="myBtn" class="btn btn-primary">Open Modal</button>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <!-- <p>Some text in the Modal..</p> -->
+                    <form action="/summary/createSummary/<%=post._id%>" method="POST">
+                      <div class="mb-3">
+                        <label for="summary" class="form-label"></label>
+                        <textarea class="form-control" id="summary" name="summary" placeholder="Summary..."></textarea>
+                        <button class="btn btn-primary" type="submit">Post</button>
+                      </div>
+                    </form>
+
+                    <!-- <form class="col-1" action="/post/taskDone/<%= post.id %>?_method=PUT" method="POST">
+                      <button class="btn btn-primary fa fa-check" type="submit"></button>
+                    </form> -->
+                  </div>
+
+                </div>
                 <%}%>
 
         </div>

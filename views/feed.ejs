@@ -65,40 +65,42 @@
     <div class="row justify-content-center mt-5">
       <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
-          <div class="containerBox">
+          <%if(!posts[i].taskDone){ %>
+            <div class="containerBox">
 
 
-            <li class="col-6 justify-content-between mt-5">
-              <div class="container ">
-                <div class='postBox'>
-                  <a href="/post/<%= posts[i]._id%>">
-                    <h5 class="profile">
-                      <%= posts[i].createdBy%>
-                    </h5>
-                  </a>
-                  <a href="/post/<%= posts[i]._id%>">
-                    <h3 class="post">
-                      <%= posts[i].caption%>
-                    </h3>
-                    <!-- <img class="img-fluid" src="<%= posts[i].image%>"> -->
-                  </a>
-                  <div class="mb-3">
-                    <form action="/comment/createComment/<%=posts[i]._id%>" method="POST">
-                      <div class="mb-3">
-                        <label for="comment" class="form-label"></label>
-                        <textarea class="form-control postCaption" id="comment" name="comment"
-                          placeholder="Add Comment..."></textarea>
-                        <button class="postButton" type="submit">Post</button>
-                      </div>
-                    </form>
+              <li class="col-6 justify-content-between mt-5">
+                <div class="container ">
+                  <div class='postBox'>
+                    <a href="/post/<%= posts[i]._id%>">
+                      <h5 class="profile">
+                        <%= posts[i].createdBy%>
+                      </h5>
+                    </a>
+                    <a href="/post/<%= posts[i]._id%>">
+                      <h3 class="post">
+                        <%= posts[i].caption%>
+                      </h3>
+                      <!-- <img class="img-fluid" src="<%= posts[i].image%>"> -->
+                    </a>
+                    <div class="mb-3">
+                      <form action="/comment/createComment/<%=posts[i]._id%>" method="POST">
+                        <div class="mb-3">
+                          <label for="comment" class="form-label"></label>
+                          <textarea class="form-control postCaption" id="comment" name="comment"
+                            placeholder="Add Comment..."></textarea>
+                          <button class="postButton" type="submit">Post</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
 
 
-            </li>
-          </div>
-          <% } %>
+              </li>
+            </div>
+            <%}%>
+              <% } %>
       </ul>
     </div>
   </div>
