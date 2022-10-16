@@ -1,7 +1,7 @@
 {
-  "name": "binary-upload-boom",
+  "name": "Masunta",
   "version": "1.0.0",
-  "description": "100Devs Social Network",
+  "description": "No 1 Accountable tool",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
