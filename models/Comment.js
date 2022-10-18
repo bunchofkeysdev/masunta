@@ -17,13 +17,18 @@ const CommentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post",
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+
     createdBy: {
         type: String,
         ref: "User",
+    },
+    createdById: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
     },
 });
 

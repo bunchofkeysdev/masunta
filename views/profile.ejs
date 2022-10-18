@@ -34,10 +34,21 @@
           <p> Hello <strong>
               <%= user.userName %>
             </strong>
+
           </p>
+          <div><img class="img-fluid" src="<%= profile[0].image%>" /></div>
           <!-- <p><strong>Email</strong>: <%= user.email %>
           </p> -->
           <!-- <a href="/logout" class="col-3 btn btn-primary">Logout</a> -->
+        </div>
+        <div class="mt-5">
+          <h2>Change Profile picture</h2>
+          <form action="/post/createProfilePic" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+          </form>
         </div>
         <!-- <div class="mt-5"> -->
         <!-- <h2>Declare</h2> -->

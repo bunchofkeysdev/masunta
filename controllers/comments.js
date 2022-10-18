@@ -5,7 +5,7 @@ const User = require("../models/User")
 module.exports = {
 
     createComments: async (req, res) => {
-        const postUser = await User.findById(req.user.id)
+        const commentUser = await User.findById(req.user.id)
         try {
 
             await Comment.create({
@@ -13,7 +13,8 @@ module.exports = {
                 likes: 0,
                 user: req.user.id,
                 post: req.params.id,
-                createdBy: postUser.userName,
+                createdBy: commentUser.userName,
+                createdById: req.user.id
             });
             console.log("Comment has been added!");
             res.redirect("/post/" + req.params.id);
@@ -22,18 +23,13 @@ module.exports = {
         }
     },
 
-    deletePost: async (req, res) => {
+    deleteComment: async (req, res) => {
         try {
-            // Find post by id
-            let post = await Post.findById({ _id: req.params.id });
-            // Delete image from cloudinary
-            await cloudinary.uploader.destroy(post.cloudinaryId);
-            // Delete post from db
-            await Post.remove({ _id: req.params.id });
-            console.log("Deleted Post");
-            res.redirect("/profile");
+            await Comment.deleteOne({ _id: req.params.commentid })
+            console.log("comment removed")
+            res.redirect("/post/" + req.params.postid);
         } catch (err) {
-            res.redirect("/profile");
+            console.log(err);
         }
-    },
+    }
 };
