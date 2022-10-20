@@ -10,10 +10,10 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       const posts = await Post.find({ user: req.user.id });
-      const profile = await Profile.find({ user: req.user.id }).sort({ createdAt: "desc" }).lean();
+      const profile = await Profile.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
       const summary = await Summary.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
       res.render("profile.ejs", { posts: posts, user: req.user, profile: profile, summary: summary, post: post });
-      console.log(summary)
+      console.log(profile)
     } catch (err) {
       console.log(err);
     }
@@ -23,8 +23,8 @@ module.exports = {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
       const summary = await Summary.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments, summary: summary });
-      console.log(summary)
+      res.render("post.ejs", { post: post, user: req.user, comments: comments, summary: summary, });
+
     } catch (err) {
       console.log(err);
     }
@@ -32,9 +32,10 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       let postUser = await User.findById(req.user.id);
+      const profile = await Profile.find({ post: req.params.id }).sort({ createdAt: "desc" }).lean();
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      const profile = await Profile.find({ user: req.user.id }).sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts, user: req.user, createdBy: postUser.userName, profile: profile });
+      res.render("feed.ejs", { posts: posts, user: req.user, createdBy: postUser.userName, profile: profile, userId: posts.user });
+      console.log(profile)
     } catch (err) {
       console.log(err);
     }

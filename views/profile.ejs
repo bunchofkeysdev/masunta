@@ -36,12 +36,17 @@
             </strong>
 
           </p>
-          <div><img class="img-fluid" src="<%= profile[0].image%>" /></div>
-          <!-- <p><strong>Email</strong>: <%= user.email %>
-          </p> -->
-          <!-- <a href="/logout" class="col-3 btn btn-primary">Logout</a> -->
+          <div>
+            <% for(let j=0; j<profile.length; j++) {%>
+              <%if(profile[j].user==user.id && profile[j].image){ %>
+                <img class="profile-pic" src=" <%=profile[j].image%>" />
+
+                <%}%>
+                  <%}%>
+          </div>
+
         </div>
-        <div class="mt-5">
+        <div class="col-6 mt-5">
           <h2>Change Profile picture</h2>
           <form action="/post/createProfilePic" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
@@ -50,24 +55,7 @@
             <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
           </form>
         </div>
-        <!-- <div class="mt-5"> -->
-        <!-- <h2>Declare</h2> -->
-        <!-- <form action="/post/createPost" enctype="multipart/form-data" method="POST"> -->
-        <!-- <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title">
-            </div> -->
-        <!-- <div class="mb-3">
-              <label for="caption" class="form-label"></label>
-              <textarea class="form-control" id="caption" name="caption" placeholder="I will do..."></textarea>
-            </div> -->
-        <!-- <div class="mb-3">
-              <label for="imgUpload" class="form-label">Image</label>
-              <input type="file" class="form-control" id="imageUpload" name="file">
-            </div> -->
-        <!-- <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-          </form> -->
-        <!-- </div> -->
+
       </div>
       <div>
         <ul class="row list-unstyled">
@@ -75,46 +63,34 @@
             <h2>Archives</h2>
             <% for(var i=0; i<posts.length; i++) {%>
               <%if(posts[i].taskDone){ %>
-                <div class="containerBox col-6">
-                  <li class="col-6 justify-content-between mt-5">
-                    <div class="container ">
+                <div>
+                  <li class="col-12">
+                    <div class="container">
+
+
                       <div class='postBox'>
-                        <a href="/post/<%= posts[i]._id%>">
-                          <h5 class="profile">
-                            <%= posts[i].createdBy%>
-                          </h5>
-                        </a>
+
                         <a href="/post/<%= posts[i]._id%>">
                           <h3 class="post">
                             <%= posts[i].caption%>
                           </h3>
-                          <p>
-                            <%= summary[i].summary%>
-                          </p>
+
                         </a>
                         <span><i class="fa fa-check check" aria-hidden="true"></i></span>
-                        <!-- <div class="mb-3">
-                        <label for="caption" class="form-label"></label>
-                        <textarea class="form-control postCaption" id="caption" name="caption"
-                          placeholder="I will do..."></textarea>
-                      </div> -->
                       </div>
                     </div>
+
                   </li>
                 </div>
 
 
 
                 <%} else{ %>
-                  <div class="containerBox col-6">
-                    <li class="col-6 justify-content-between mt-5">
+                  <div class="">
+                    <li class="col-12">
                       <div class="container ">
                         <div class='postBox'>
-                          <a href="/post/<%= posts[i]._id%>">
-                            <h5 class="profile">
-                              <%= posts[i].createdBy%>
-                            </h5>
-                          </a>
+
                           <a href="/post/<%= posts[i]._id%>">
                             <h3 class="post">
                               <%= posts[i].caption%>

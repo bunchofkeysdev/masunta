@@ -32,7 +32,7 @@
 
       <!-- post -->
 
-      <div class="container col-6 ">
+      <div>
         <div class='postBox'>
 
           <h5 class="profile">
@@ -52,94 +52,84 @@
               <button class="postButton" type="submit">Post</button>
             </div>
           </form>
-        </div>
-      </div>
-      <div class="col-6">
-        <ul>
-          <% for(var i=0; i<comments.length; i++) {%>
-            <li class="col-6 justify-content-between mt-5">
-              <strong>
-                <%= comments[i].createdBy%>
-              </strong>
-              <%= comments[i].comment%>
-                <%if(comments[i].createdById==user.id){ %>
-                  <form action="/comment/deleteComment/<%=post._id%>/<%= comments[i]._id %>?_method=DELETE"
-                    method="POST">
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                  </form>
-                  <%}%>
-
-            </li>
-            <% } %>
-        </ul>
-      </div>
-      <div class="col-6">
-
-        <%if( post.taskDone){ %>
-          <%= summary[0].summary%>
-            <% } %>
-
-      </div>
-
-
-      <div>
-        <!-- <h2>
-          <%= post.title %>
-        </h2>
-        <img class="img-fluid" src="<%= post.image%>" /> -->
-        <div class="row justify-content-between col-6">
           <%if(post.user==user.id){ %>
             <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST" class="col-3">
               <button class="btn btn-primary fa fa-trash" type="submit"></button>
             </form>
             <%}%>
-              <%if(post.user==user.id && !post.taskDone){ %>
+        </div>
 
-                <!-- Trigger/Open The Modal -->
-                <button id="myBtn" class="btn btn-primary">Done</button>
+      </div>
 
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
+      <div>
+        <%if( comments.length> 0){ %>
+          <h3>Comments</h3>
+          <%}%>
+            <ul>
+              <% for(var i=0; i<comments.length; i++) {%>
 
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <!-- <p>Some text in the Modal..</p> -->
-                    <form action="/summary/createSummary/<%=post._id%>" method="POST">
-                      <div class="mb-3">
-                        <label for="summary" class="form-label"></label>
-                        <textarea class="form-control" id="summary" name="summary" placeholder="Summary..."></textarea>
-                        <button class="btn btn-primary" type="submit">Post</button>
-                      </div>
-                    </form>
+                <li>
+                  <strong>
+                    <%= comments[i].createdBy%>
+                  </strong>
+                  <%= comments[i].comment%>
+                    <%if(comments[i].createdById==user.id){ %>
+                      <form action="/comment/deleteComment/<%=post._id%>/<%= comments[i]._id %>?_method=DELETE"
+                        method="POST">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                      </form>
+                      <%}%>
 
-                    <!-- <form class="col-1" action="/post/taskDone/<%= post.id %>?_method=PUT" method="POST">
-                      <button class="btn btn-primary fa fa-check" type="submit"></button>
-                    </form> -->
+                </li>
+                <% } %>
+            </ul>
+      </div>
+      <div class="col-6">
+
+        <%if( post.taskDone){ %>
+          <div class="summary">
+            <h5>Summary</h5>
+            <%= summary[0].summary%>
+          </div>
+
+          <% } %>
+
+      </div>
+
+
+      <div>
+
+        <div class="row justify-content-between col-6">
+
+          <%if(post.user==user.id && !post.taskDone){ %>
+
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn" class="btn btn-primary">Done</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- <p>Some text in the Modal..</p> -->
+                <form action="/summary/createSummary/<%=post._id%>" method="POST">
+                  <div class="mb-3">
+                    <label for="summary" class="form-label"></label>
+                    <textarea class="form-control" id="summary" name="summary" placeholder="Summary..."></textarea>
+                    <button class="btn btn-primary" type="submit">Post</button>
                   </div>
+                </form>
 
-                </div>
-                <%}%>
+
+              </div>
+
+            </div>
+            <%}%>
 
         </div>
       </div>
-      <!-- comment -->
-      <!-- <div class="col-6 mt-5">
-        <h2>Add a comment</h2>
 
-
-        <div class="mb-3">
-          <label for="comment" class="form-label">Comment</label>
-          <input type="text" class="form-control" id="comment" name="comment">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-      </div> -->
-
-      <!-- <div class="col-6 mt-5">
-        <a class="btn btn-primary" href="/profile">Return to Profile</a>
-        <a class="btn btn-primary" href="/feed">Return to Feed</a>
-      </div> -->
     </div>
   </div>
 

@@ -5,13 +5,15 @@ const ProfileSchema = new mongoose.Schema({
     image: {
         type: String,
         require: true,
+        default: '/imgs/profile-pic'
     },
     cloudinaryId: {
         type: String,
-        require: true,
+
+
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         ref: "User",
     },
 

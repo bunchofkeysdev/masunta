@@ -33,29 +33,21 @@
           <%= user.userName %>
         </strong>
       </p>
-      <!-- <p><strong>Email</strong>: <%= user.email %>
-      </p> -->
-      <!-- <a href="/logout" class="col-3 btn btn-primary">Logout</a> -->
+
     </div>
-    <div class="col-6" style="margin: auto;">
+    <div class="col-12">
 
       <div class="mt-5">
         <h2>Declare</h2>
         <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-          <!-- <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" name="title">
-        </div> -->
+
           <div class="mb-3">
             <label for="caption" class="form-label"></label>
             <textarea class="form-control" id="caption" name="caption"
               placeholder="I will finish 1 codewars kata..."></textarea>
           </div>
-          <!-- <div class="mb-3">
-          <label for="imgUpload" class="form-label">Image</label>
-          <input type="file" class="form-control" id="imageUpload" name="file">
-        </div> -->
-          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -64,35 +56,57 @@
 
     <div class="row justify-content-center mt-5">
       <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
+        <% for(let i=0; i<posts.length; i++) {%>
           <%if(!posts[i].taskDone){ %>
-            <div class="containerBox">
-              <li class="col-6 justify-content-between mt-5">
+            <div>
+              <li class="col-12">
+
                 <div class="container ">
+
+
+
                   <div class='postBox'>
-                    <a href="/post/<%= posts[i]._id%>">
-                      <h5 class="profile">
-                        <%= posts[i].createdBy%>
-                      </h5>
-                    </a>
+                    <div class="profile">
+                      <% for(let j=0; j<profile.length; j++) {%>
+                        <%if(profile[j].user==posts[i].user){ %>
+                          <a href="">
+                            <img class="profile-pic" src="<%= profile[j].image%>" alt="">
+                          </a>
+                          <% } %>
+                            <%}%>
+
+                              <a href="">
+                                <h5 class="profile-name">
+                                  <%= posts[i].createdBy%>
+                                </h5>
+                              </a>
+                    </div>
+
                     <a href="/post/<%= posts[i]._id%>">
                       <h3 class="post">
                         <%= posts[i].caption%>
                       </h3>
-                      <!-- <img class="img-fluid" src="<%= posts[i].image%>"> -->
+
                     </a>
                     <div class="mb-3">
                       <form action="/comment/createComment/<%=posts[i]._id%>" method="POST">
-                        <div class="mb-3">
-                          <label for="comment" class="form-label"></label>
+                        <div class="">
+
                           <textarea class="form-control postCaption" id="comment" name="comment"
                             placeholder="Add Comment..."></textarea>
-                          <button class="postButton" type="submit">Post</button>
+                          <button class="btn btn-primary" type="submit">Post</button>
                         </div>
                       </form>
                     </div>
                   </div>
+
+
+
+
+
                 </div>
+
+
               </li>
             </div>
             <%}%>
